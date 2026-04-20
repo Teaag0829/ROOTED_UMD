@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UMD CommonGround</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>UMD CommonGround</h1>
+  <p>Building connection through shared space, accessibility, and community presence.</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="events.html">Upcoming Events</a>
+  <a href="map.html">Community Map</a>
+</nav>
+
+<section class="hero">
+  <h2>You're already part of a community.</h2>
+  <p>This platform helps make it visible.</p>
+  <a class="button" href="map.html">Explore the Map</a>
+</section>
+
+<section class="info">
+  <h3>About the Project</h3>
+  <p>
+    UMD CommonGround is designed to reduce social isolation by highlighting
+    accessible spaces where connection can happen naturally—study areas, lounges,
+    outdoor spaces, and informal gathering points.
+  </p>
+</section>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Upcoming Events - UMD CommonGround</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Upcoming Community Events</h1>
+  <p>Low-pressure, accessible opportunities to connect.</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="events.html">Upcoming Events</a>
+  <a href="map.html">Community Map</a>
+</nav>
+
+<section class="card">
+  <h3>Study Hall Social</h3>
+  <p>Location: McKeldin Library</p>
+  <p>A quiet, open space for studying together—no sign-up required.</p>
+</section>
+
+<section class="card">
+  <h3>Campus Walk & Talk</h3>
+  <p>Location: Main Quad</p>
+  <p>Casual walking group focused on meeting new people naturally.</p>
+</section>
+
+<section class="card">
+  <h3>Open Art Table</h3>
+  <p>Location: Stamp Student Union</p>
+  <p>Drop-in creative space for drawing, painting, and conversation.</p>
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Community Map - UMD CommonGround</title>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+#map {
+  height: 600px;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Community Map</h1>
+  <p>Discover accessible spaces for connection around UMD</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="events.html">Upcoming Events</a>
+  <a href="map.html">Community Map</a>
+</nav>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="map.js"></script>
+
+</body>
+</html>
+
+var map = L.map('map').setView([38.9897, -76.9378], 14);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© OpenStreetMap & CARTO',
+  maxZoom: 19
+}).addTo(map);
+
+var locations = [
+  {name: "McKeldin Library", coords: [38.9869, -76.9456]},
+  {name: "Stamp Student Union", coords: [38.9882, -76.9448]},
+  {name: "Hornbake Plaza", coords: [38.9905, -76.9440]},
+  {name: "Main Quad", coords: [38.9884, -76.9435]},
+  {name: "Eppley Recreation Center", coords: [38.9936, -76.9451]}
+];
+
+locations.forEach(function(loc) {
+  L.marker(loc.coords)
+    .addTo(map)
+    .bindPopup("<b>" + loc.name + "</b><br>Community Space");
+});
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+  color: #222;
+  text-align: center;
+}
+
+header {
+  background: #D21034;
+  color: white;
+  padding: 25px;
+}
+
+nav {
+  background: #fff;
+  padding: 10px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #D21034;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 60px 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #D21034;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 15px;
+  width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
